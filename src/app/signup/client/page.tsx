@@ -1,3 +1,3 @@
-import ClientSignupPage from "@/features/auth/signup/ClientSignUpPage";
+import ClientSignUpPage from "@/features/auth/signup/ClientSignUpPage";
 
-export default ClientSignupPage;
+export default ClientSignUpPage;

@@ -2,8 +2,13 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
+  flex-grow: 1;
+  background-attachment: fixed;
+  padding: 40px 0;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .logo {
@@ -25,12 +30,19 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  width: 450px;
+  width: 500px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
 }
 
 .fieldGroup {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .label {
@@ -73,6 +85,50 @@
   background: rgba(30, 41, 59, 1);
 }
 
+.inputField :global(.mantine-TextInput-input)::placeholder,
+.inputField :global(.mantine-PasswordInput-input)::placeholder,
+.inputField :global(.mantine-Textarea-input)::placeholder {
+  color: rgba(148, 163, 184, 0.5) !important;
+  font-size: 0.9rem;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.inputField :global(.mantine-TextInput-input:focus)::placeholder {
+  color: rgba(148, 163, 184, 0.8);
+  transition: color 0.2s ease;
+}
+
+.selectInput {
+  border: 1px solid rgb(71, 85, 105) !important;
+  background: rgba(30, 41, 59, 0.5) !important;
+  color: white !important;
+}
+
+.selectInput:focus {
+  border-color: rgb(52, 211, 153) !important;
+}
+
+.selectDropdown {
+  background-color: rgb(15, 23, 42) !important;
+  border: 1px solid rgb(71, 85, 105) !important;
+}
+
+.selectOption {
+  color: rgb(203, 213, 225) !important;
+  transition: background 0.2s ease;
+}
+
+.selectOption[data-hovered] {
+  background-color: rgba(52, 211, 153, 0.1) !important;
+  color: rgb(52, 211, 153) !important;
+}
+
+.selectOption[data-selected] {
+  background-color: rgb(52, 211, 153) !important;
+  color: rgb(15, 23, 42) !important;
+}
+
 .submitButton {
   padding: 0.75rem 1rem !important;
   border-radius: 0.5rem !important;
@@ -111,4 +167,14 @@
 .signInLink {
   color: rgb(52, 211, 153);
   text-decoration: none;
+}
+
+.infoBox {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(52, 211, 153, 0.1);
+  border: 1px solid rgba(52, 211, 153, 0.3);
+  font-size: 0.875rem;
+  color: rgb(52, 211, 153);
+  margin-top: 20px;
 }

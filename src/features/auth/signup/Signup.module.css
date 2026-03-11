@@ -1,0 +1,114 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo {
+  font-size: 2.25rem;
+  font-weight: bold;
+  background: linear-gradient(to right, rgb(52, 211, 153), rgb(34, 211, 238));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.tagline {
+  color: rgb(148, 163, 184);
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 450px;
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  display: block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgb(203, 213, 225);
+  margin-bottom: 0.5rem;
+}
+
+.rightArrow {
+  margin-left: 10px;
+}
+
+.inputField :global(.mantine-Input-input) {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.2s;
+  height: 50px;
+}
+
+.inputField :global(.mantine-Input-input:focus) {
+  border-color: rgb(52, 211, 153) !important;
+  background: rgba(30, 41, 59, 1);
+  outline: none;
+}
+
+.inputField :global(.mantine-Input-section) {
+  color: rgba(148, 163, 184, 0.8);
+}
+
+.inputField :global(.mantine-PasswordInput-input:focus),
+.inputField :global(.mantine-PasswordInput-input:focus-within) {
+  border-color: rgb(52, 211, 153) !important;
+  outline: none !important;
+  background: rgba(30, 41, 59, 1);
+}
+
+.submitButton {
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  background: linear-gradient(
+    to right,
+    rgb(52, 211, 153),
+    rgb(34, 211, 238)
+  ) !important;
+  color: rgb(15, 23, 42) !important;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  height: 50px !important;
+}
+
+.submitButton:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
+}
+
+.submitButton:active {
+  transform: translateY(0);
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.875rem;
+  color: rgb(148, 163, 184);
+  margin-top: 2rem;
+}
+
+.signInLink {
+  color: rgb(52, 211, 153);
+  text-decoration: none;
+}

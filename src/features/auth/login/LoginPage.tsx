@@ -1,5 +1,7 @@
 import styles from "./LoginPage.module.css";
 
+import Link from "next/link";
+
 import { ArrowRight, EyeIcon, MailIcon } from "lucide-react";
 import { Button, PasswordInput, TextInput } from "@mantine/core";
 
@@ -38,13 +40,13 @@ export default function LoginPage() {
           <hr className={styles.dividerLine} />
         </div>
 
-        <Button variant="unstyled" className={styles.clientButton}>
+        <Link href="/signup/client" className={styles.clientButton}>
           Sign up as Client
-        </Button>
+        </Link>
 
-        <Button variant="unstyled" className={styles.professionalButton}>
+        <Link href="/signup/professional" className={styles.professionalButton}>
           Join as Beauty Professional
-        </Button>
+        </Link>
 
         <p className={styles.footer}>
           By signing in, you agree to Bloom&apos;s Terms of Service and Privacy

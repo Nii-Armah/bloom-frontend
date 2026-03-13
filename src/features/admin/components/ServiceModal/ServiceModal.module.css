@@ -1,0 +1,86 @@
+.modalContent {
+  background: rgb(30, 41, 59) !important;
+  border: 1px solid rgba(100, 116, 139, 0.3) !important;
+  border-radius: 0.75rem !important;
+  padding: 0 !important;
+  color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+.header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: rgb(148, 163, 184);
+  cursor: pointer;
+  font-size: 1.5rem;
+  transition: color 0.2s;
+}
+
+.closeButton:hover {
+  color: white;
+}
+
+.inputField {
+  padding: 0.75rem 1rem !important;
+  background: rgba(30, 41, 59, 0.8) !important;
+  border: 1px solid rgba(148, 163, 184, 0.2) !important;
+  color: white !important;
+  border-radius: 0.5rem !important;
+  font-size: 1rem !important;
+  height: 55px;
+}
+
+.inputField:focus {
+  border-color: rgba(34, 197, 94, 0.4) !important;
+}
+
+.inputLabel {
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  color: rgb(203, 213, 225) !important;
+  margin-bottom: 0.5rem;
+}
+
+.actions {
+  display: flex;
+  gap: 1rem;
+  padding: 1.5rem 2rem;
+  border-top: 1px solid rgba(100, 116, 139, 0.2);
+  margin-top: 2rem;
+}
+
+.submitBtn {
+  flex: 1;
+  height: 44px;
+  background: linear-gradient(
+    135deg,
+    rgb(52, 211, 153),
+    rgb(34, 211, 238)
+  ) !important;
+  color: rgb(15, 23, 42) !important;
+  font-weight: 600;
+  border-radius: 0.5rem;
+  border: none;
+}
+
+.cancelBtn {
+  flex: 1;
+  height: 44px;
+  background: rgba(100, 116, 139, 0.1) !important;
+  color: rgb(203, 213, 225) !important;
+  border: 1px solid rgba(100, 116, 139, 0.2) !important;
+  font-weight: 600;
+}

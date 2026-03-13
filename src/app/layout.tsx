@@ -1,5 +1,7 @@
 import "./globals.css";
+import "@mantine/notifications/styles.css";
 import AppProvider from "@/providers/AppProvider";
+import { Notifications } from "@mantine/notifications";
 
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
@@ -38,6 +40,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <MantineProvider defaultColorScheme="dark">
+          <Notifications position="top-right" />
           <AppProvider>{children}</AppProvider>
         </MantineProvider>
       </body>

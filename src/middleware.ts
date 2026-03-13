@@ -12,13 +12,13 @@ export function middleware(request: NextRequest) {
     }
   }
 
-  // Prevent logged-in users from hitting /login or /register
+  // Prevent logged-in users from hitting /login or /signup
   if (
     token &&
     (request.nextUrl.pathname === "/login" ||
       request.nextUrl.pathname.startsWith("/signup"))
   ) {
-    const target = userRole === "admin" ? "/admin/dashboard" : "/dashboard";
+    const target = userRole === "admin" ? "/admin" : "/dashboard";
     return NextResponse.redirect(new URL(target, request.url));
   }
 

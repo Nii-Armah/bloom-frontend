@@ -1,0 +1,35 @@
+.button {
+  padding: 0.75rem 1rem !important;
+  border-radius: 0.5rem !important;
+  background: linear-gradient(
+    to right,
+    rgb(52, 211, 153),
+    rgb(34, 211, 238)
+  ) !important;
+  color: rgb(15, 23, 42) !important;
+  font-weight: 600;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  height: 50px !important;
+  margin-top: 20px;
+  margin-left: auto;
+  display: block;
+}
+
+.button:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
+}
+
+.button:active {
+  transform: translateY(0);
+}
+
+.services {
+  margin-top: 30px;
+  display: grid;
+  gap: 10px;
+}

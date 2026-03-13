@@ -9,14 +9,14 @@ export interface ApiError {
   status: number | undefined;
 }
 
-export const api = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000/api/v1",
+export const apiClient = axios.create({
+  baseURL: process.env.NEXT_PUBLIC_API_URL || "http://localhost:8001/api/v1",
   headers: {
     "Content-Type": "application/json",
   },
 });
 
-api.interceptors.response.use(
+apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
     const backendResponse: BackendError = error.response?.data;

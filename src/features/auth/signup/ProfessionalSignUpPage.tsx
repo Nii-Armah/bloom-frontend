@@ -1,11 +1,13 @@
 "use client";
 
 import styles from "./SignUp.module.css";
+import { useCreateProfessional } from "@/hooks/useProfessionals";
 import {
   ProfessionalData,
   ProfessionalSchema,
   defaultProfessionalValues,
 } from "@/schemas/Professional";
+import { setServerErrors } from "@/utils/form";
 
 import Link from "next/link";
 
@@ -50,9 +52,12 @@ const SPECIALTIES = [
 ];
 
 export default function ProfessionalSignUpPage() {
+  const { mutate, isPending } = useCreateProfessional();
+
   const {
     control,
     handleSubmit,
+    setError,
     formState: { errors },
   } = useForm<ProfessionalData>({
     resolver: zodResolver(ProfessionalSchema),
@@ -60,7 +65,11 @@ export default function ProfessionalSignUpPage() {
   });
 
   function onRegister(data: ProfessionalData) {
-    console.log("Professional Data: ", data);
+    mutate(data, {
+      onError: (err: any) => {
+        setServerErrors(err, setError);
+      },
+    });
   }
 
   return (
@@ -188,7 +197,11 @@ export default function ProfessionalSignUpPage() {
           </div>
         </div>
 
-        <Button type="submit" className={styles.submitButton}>
+        <Button
+          type="submit"
+          className={styles.submitButton}
+          loading={isPending}
+        >
           Create Account & Go Live{" "}
           <ArrowRight width={20} height={20} className={styles.rightArrow} />
         </Button>

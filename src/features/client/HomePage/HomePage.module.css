@@ -67,3 +67,13 @@
 .navButton:active {
   transform: translateY(0) scale(0.97);
 }
+
+.logoutButton {
+  color: #94a3b8;
+  transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+}

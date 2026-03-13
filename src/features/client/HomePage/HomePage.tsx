@@ -1,9 +1,14 @@
+"use client";
+
 import styles from "./HomePage.module.css";
 import Logo from "@/components/Logo";
 import Professional from "@/features/client/components/Professional/Professional";
 
-import { Search } from "lucide-react";
-import { TextInput, Button, Text, Title } from "@mantine/core";
+import Cookie from "js-cookie";
+import { Search, LogOut } from "lucide-react";
+import { TextInput, Button, Text, Title, Group } from "@mantine/core";
+import { useRouter } from "next/navigation";
+import { useQueryClient } from "@tanstack/react-query";
 
 const professional = {
   fullName: "Sophia Martinez",
@@ -12,14 +17,43 @@ const professional = {
 };
 
 export default function HomePage() {
+  const queryClient = useQueryClient();
+  const router = useRouter();
+
+  function handleLogout() {
+    Cookie.remove("access_token", { path: "/" });
+    Cookie.remove("user_role", { path: "/" });
+
+    queryClient.clear();
+    router.push("/login");
+    router.refresh();
+  }
+
   return (
     <div className={styles.page}>
       <header className={styles.header}>
         <div className={styles.titleAndBookingsButton}>
           <Logo />
-          <Button className={styles.navButton} variant="outline" px={16} py={8}>
-            My Bookings
-          </Button>
+
+          <Group gap="sm">
+            <Button
+              className={styles.navButton}
+              variant="outline"
+              px={16}
+              py={8}
+            >
+              My Bookings
+            </Button>
+
+            <Button
+              className={styles.logoutButton}
+              variant="subtle"
+              onClick={handleLogout}
+              leftSection={<LogOut size={16} />}
+            >
+              Logout
+            </Button>
+          </Group>
         </div>
 
         <TextInput

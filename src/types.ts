@@ -4,3 +4,9 @@ export type ServiceData = {
   price: number;
   bookingsCount: number;
 };
+
+export type ProfessionalData = {
+  fullName: string;
+  specialty: string;
+  bio: string;
+};

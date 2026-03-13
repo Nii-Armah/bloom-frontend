@@ -33,7 +33,7 @@ export const ProfessionalSchema = z
 
 export type ProfessionalData = z.infer<typeof ProfessionalSchema>;
 
-export const defaultProfessionalValue: ProfessionalData = {
+export const defaultProfessionalValues: ProfessionalData = {
   fullName: "",
   email: "",
   bio: "",

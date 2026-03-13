@@ -17,6 +17,15 @@ export function proxy(request: NextRequest) {
     return NextResponse.redirect(new URL(target, request.url));
   }
 
+  if (
+    token &&
+    userRole === "admin" &&
+    !pathname.startsWith("/admin") &&
+    !isPublicPath
+  ) {
+    return NextResponse.redirect(new URL("/admin", request.url));
+  }
+
   if (pathname.startsWith("/admin") && userRole !== "admin") {
     return NextResponse.redirect(new URL("/", request.url));
   }

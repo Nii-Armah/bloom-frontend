@@ -14,19 +14,28 @@ import { Button, PasswordInput, TextInput } from "@mantine/core";
 
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useCreateClient } from "@/hooks/useClient";
+import { setServerErrors } from "@/utils/form";
 
 export default function ClientSignUpPage() {
+  const { mutate, isPending } = useCreateClient();
+
   const {
     control,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm<ClientData>({
     resolver: zodResolver(ClientSchema),
     defaultValues: defaultClientValues,
   });
 
   function onRegister(data: ClientData) {
-    console.log("Client Data: ", data);
+    mutate(data, {
+      onError: (err: any) => {
+        setServerErrors(err, setError);
+      },
+    });
   }
 
   return (
@@ -123,7 +132,11 @@ export default function ClientSignUpPage() {
           />
         </div>
 
-        <Button type="submit" className={styles.submitButton}>
+        <Button
+          type="submit"
+          className={styles.submitButton}
+          loading={isPending}
+        >
           Sign Up{" "}
           <ArrowRight width={20} height={20} className={styles.rightArrow} />
         </Button>

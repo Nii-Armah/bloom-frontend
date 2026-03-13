@@ -1,6 +1,7 @@
 import { BackendError } from "@/types/api";
 
 import axios from "axios";
+import Cookie from "js-cookie";
 
 export interface ApiError {
   message: string;
@@ -32,3 +33,12 @@ apiClient.interceptors.response.use(
     return Promise.reject(processedError);
   },
 );
+
+apiClient.interceptors.request.use((config) => {
+  const token = Cookie.get("access_token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});

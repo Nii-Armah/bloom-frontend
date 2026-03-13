@@ -1,4 +1,5 @@
 import styles from "./SideBar.module.css";
+import Logo from "@/components/Logo";
 
 import { useRouter } from "next/navigation";
 
@@ -21,8 +22,20 @@ export default function SideBar() {
 
   return (
     <Tabs.List className={styles.sidebarList}>
+      <div className={styles.logoWrapper}>
+        <Logo />
+      </div>
+
       <Tabs.Tab value="services" className={styles.tab}>
         Services
+      </Tabs.Tab>
+
+      <Tabs.Tab value="schedules" className={styles.tab}>
+        Schedules
+      </Tabs.Tab>
+
+      <Tabs.Tab value="bookings" className={styles.tab}>
+        Bookings
       </Tabs.Tab>
 
       <UnstyledButton className={styles.logoutButton} onClick={handleLogout}>

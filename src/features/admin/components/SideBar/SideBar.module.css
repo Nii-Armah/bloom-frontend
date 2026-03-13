@@ -6,23 +6,39 @@
   border-right: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   flex-direction: column;
+  gap: 10px;
 }
 
 .tab {
-  color: #cbd5e1;
-  padding: 12px 16px;
-  border-radius: var(--mantine-radius-md);
-  transition: all 0.2s ease;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  margin-bottom: 4px;
-
   width: 100%;
-  display: flex !important;
-  justify-content: flex-start !important;
-  align-items: center !important;
-  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: none !important;
+  background-color: transparent !important;
+  color: #94a3b8 !important;
+  font-weight: 500;
+  transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  height: 45px;
+}
+
+.tab:hover:not([data-active]) {
+  color: #ffffff !important;
+  background-color: rgba(51, 65, 85, 0.5) !important;
+}
+
+.tab[data-active] {
+  background: linear-gradient(to right, #10b981, #06b6d4) !important;
+  color: #0f172a !important;
+  box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.3);
+}
+
+.tab:hover {
+  color: #ffffff;
+  background-color: rgba(51, 65, 85, 0.5);
 }
 
 .tab[data-active] {
@@ -35,7 +51,7 @@
   padding: 10px 14px;
   border-radius: var(--mantine-radius-md);
   transition: all 0.2s ease;
-  color: var(--mantine-color-gray-7); /* Subdued text */
+  color: var(--mantine-color-gray-7);
 }
 
 .logoutIcon {
@@ -43,7 +59,6 @@
   transition: color 0.2s ease;
 }
 
-/* On Hover: Switch to a soft red alert style */
 .logoutButton:hover {
   background-color: var(--mantine-color-red-0);
 }
@@ -54,4 +69,10 @@
 
 .logoutButton:hover .logoutIcon {
   color: var(--mantine-color-red-6);
+}
+
+.logoWrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }

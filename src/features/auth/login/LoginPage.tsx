@@ -1,20 +1,23 @@
 "use client";
 
 import styles from "./LoginPage.module.css";
+import { useLogin } from "@/hooks/useAuth";
 import { LoginSchema, LoginData, defaultLoginValues } from "@/schemas/Login";
+import { setServerErrors } from "@/utils/form";
 
 import Link from "next/link";
-
 import { ArrowRight, EyeIcon, MailIcon } from "lucide-react";
 import { Button, PasswordInput, TextInput } from "@mantine/core";
-
 import { useForm, Controller } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 export default function LoginPage() {
+  const { mutate, isPending } = useLogin();
+
   const {
     control,
     formState: { errors },
+    setError,
     handleSubmit,
   } = useForm<LoginData>({
     resolver: zodResolver(LoginSchema),
@@ -22,7 +25,9 @@ export default function LoginPage() {
   });
 
   function onLogin(data: LoginData) {
-    console.log("Login Data", data);
+    mutate(data, {
+      onError: (err: any) => setServerErrors(err, setError),
+    });
   }
 
   return (
@@ -66,7 +71,11 @@ export default function LoginPage() {
           />
         </div>
 
-        <Button type="submit" className={styles.submitButton}>
+        <Button
+          type="submit"
+          className={styles.submitButton}
+          loading={isPending}
+        >
           Sign In{" "}
           <ArrowRight width={20} height={20} className={styles.rightArrow} />
         </Button>

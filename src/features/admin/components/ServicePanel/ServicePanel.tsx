@@ -8,7 +8,7 @@ import { Button } from "@mantine/core";
 import { useDisclosure } from "@mantine/hooks";
 
 export default function ServicePanel() {
-  const [opened, { open, close }] = useDisclosure(true);
+  const [opened, { open, close }] = useDisclosure(false);
 
   return (
     <div>

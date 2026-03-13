@@ -17,7 +17,7 @@ export const useCreateProfessional = () => {
         path: "/",
       });
 
-      Cookie.set("user_role", "admin", { expires: 7, path: "/" });
+      Cookie.set("user_role", data.user.role, { expires: 7, path: "/" });
 
       notifications.show({
         title: "Registration Success",

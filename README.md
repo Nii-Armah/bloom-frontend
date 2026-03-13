@@ -32,3 +32,34 @@ Frontend for Bloom
    - Edge functions for scalability
 
 **Trade-off:** More opinionated than React. But for this project, beneficial (faster shipping).
+
+## Getting Started
+
+### Prerequisites
+
+- **Node.js** 18+
+- **npm**
+
+### Quick Start
+
+#### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+#### 2. Environment Setup
+
+Create `.env.local`:
+
+```
+NEXT_PUBLIC_API_URL=http://localhost:8000
+```
+
+#### 3. Run Development Server
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)

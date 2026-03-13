@@ -1,0 +1,73 @@
+.card {
+  background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+  border: 1px solid rgba(51, 65, 85, 0.5);
+  border-radius: var(--mantine-radius-xl);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  border-color: #475569;
+  box-shadow: 0 10px 30px -10px rgba(52, 211, 153, 0.1);
+  transform: translateY(-2px);
+}
+
+.header {
+  padding: 1.5rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+}
+
+.body {
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(51, 65, 85, 0.5);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.description {
+  color: #94a3b8;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+
+.metadata {
+  color: #cbd5e1;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.specialty {
+  font-size: var(--mantine-font-size-sm);
+  color: #34d399;
+  margin: 0;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.bookButton {
+  width: 100%;
+  height: 48px;
+  background: linear-gradient(to right, #34d399, #22d3ee);
+  border: none;
+  border-radius: var(--mantine-radius-md);
+  color: #0f172a;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.bookButton:hover {
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.3);
+  filter: brightness(1.05);
+}
+
+.footer {
+  padding: 1.5rem;
+}

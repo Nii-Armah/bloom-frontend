@@ -1,9 +1,11 @@
 import styles from "./ServiceModal.module.css";
+import { useCreateService } from "@/hooks/useService";
 import {
   ServiceData,
   ServiceSchema,
   defaultServiceValues,
 } from "@/schemas/Service";
+import { setServerErrors } from "@/utils/form";
 
 import {
   Modal,
@@ -28,23 +30,37 @@ export default function ServiceModal({ opened, onClose }: ServiceModalProps) {
     label: styles.inputLabel,
   };
 
+  const { mutate: createService, isPending: isCreating } = useCreateService();
+
   const {
     control,
     formState: { errors },
     handleSubmit,
+    setError,
+    reset,
   } = useForm<ServiceData>({
     resolver: zodResolver(ServiceSchema),
     defaultValues: defaultServiceValues,
   });
 
   function onSubmit(data: ServiceData) {
-    console.log("Service Data: ", data);
+    createService(data, {
+      onSuccess() {
+        onModalClose();
+      },
+      onError: (err: any) => setServerErrors(err, setError),
+    });
+  }
+
+  function onModalClose() {
+    onClose();
+    reset();
   }
 
   return (
     <Modal
       opened={opened}
-      onClose={onClose}
+      onClose={onModalClose}
       withCloseButton={false}
       padding={0}
       centered
@@ -53,7 +69,7 @@ export default function ServiceModal({ opened, onClose }: ServiceModalProps) {
     >
       <div className={styles.header}>
         <h3>Create New Service</h3>
-        <button className={styles.closeButton} onClick={onClose}>
+        <button className={styles.closeButton} onClick={onModalClose}>
           ×
         </button>
       </div>
@@ -128,10 +144,15 @@ export default function ServiceModal({ opened, onClose }: ServiceModalProps) {
       </Box>
 
       <div className={styles.actions}>
-        <Button className={styles.cancelBtn} onClick={onClose}>
+        <Button className={styles.cancelBtn} onClick={onModalClose}>
           Cancel
         </Button>
-        <Button className={styles.submitBtn} type="submit" form="serviceForm">
+        <Button
+          className={styles.submitBtn}
+          type="submit"
+          form="serviceForm"
+          loading={isCreating}
+        >
           Create Service
         </Button>
       </div>

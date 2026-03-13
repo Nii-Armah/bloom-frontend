@@ -10,14 +10,13 @@ export const useLogin = () => {
   return useMutation({
     mutationFn: AuthService.login,
     onSuccess: (data) => {
-      console.log("Login Data: ", data);
       Cookie.set("access_token", data.tokens.access_token, {
         expires: 7,
         path: "/",
       });
-      Cookie.set("user_role", "admin", { expires: 7, path: "/" });
+      Cookie.set("user_role", data.user.role, { expires: 7, path: "/" });
 
-      const target = !data.role ? "/admin" : "/";
+      const target = data.user.role == "admin" ? "/admin" : "/";
       router.push(target);
       router.refresh();
     },

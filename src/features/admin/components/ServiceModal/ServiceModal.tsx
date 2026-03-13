@@ -1,5 +1,11 @@
 import styles from "./ServiceModal.module.css";
 import {
+  ServiceData,
+  ServiceSchema,
+  defaultServiceValues,
+} from "@/schemas/Service";
+
+import {
   Modal,
   TextInput,
   Textarea,
@@ -8,6 +14,8 @@ import {
   SimpleGrid,
   Box,
 } from "@mantine/core";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm, Controller } from "react-hook-form";
 
 interface ServiceModalProps {
   opened: boolean;
@@ -19,6 +27,19 @@ export default function ServiceModal({ opened, onClose }: ServiceModalProps) {
     input: styles.inputField,
     label: styles.inputLabel,
   };
+
+  const {
+    control,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<ServiceData>({
+    resolver: zodResolver(ServiceSchema),
+    defaultValues: defaultServiceValues,
+  });
+
+  function onSubmit(data: ServiceData) {
+    console.log("Service Data: ", data);
+  }
 
   return (
     <Modal
@@ -38,36 +59,69 @@ export default function ServiceModal({ opened, onClose }: ServiceModalProps) {
       </div>
 
       <Box p="2rem" pb={0}>
-        <form id="serviceForm">
-          <TextInput
-            label="Service Name"
-            placeholder="e.g., Hair Cut & Style"
-            classNames={inputStyles}
-            mb="1.5rem"
+        <form id="serviceForm" onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            control={control}
+            name="name"
+            render={({ field }) => (
+              <TextInput
+                label="Service Name"
+                placeholder="e.g., Hair Cut & Style"
+                classNames={inputStyles}
+                mb="1.5rem"
+                {...field}
+                error={errors.name?.message}
+              />
+            )}
           />
 
-          <Textarea
-            label="Description (Optional)"
-            placeholder="Describe what's included in this service..."
-            classNames={inputStyles}
-            mb="1.5rem"
-            minRows={4}
+          <Controller
+            control={control}
+            name="description"
+            render={({ field }) => (
+              <Textarea
+                label="Description (Optional)"
+                placeholder="Describe what's included in this service..."
+                classNames={inputStyles}
+                mb="1.5rem"
+                minRows={10}
+                {...field}
+                error={errors.description?.message}
+              />
+            )}
           />
 
           <SimpleGrid cols={2} spacing="1rem">
-            <NumberInput
-              label="Duration (minutes)"
-              placeholder="45"
-              min={15}
-              max={480}
-              classNames={inputStyles}
+            <Controller
+              control={control}
+              name="duration"
+              render={({ field }) => (
+                <NumberInput
+                  label="Duration (minutes)"
+                  placeholder="45"
+                  min={15}
+                  max={480}
+                  classNames={inputStyles}
+                  {...field}
+                  error={errors.duration?.message}
+                />
+              )}
             />
-            <NumberInput
-              label="Price (GHS)"
-              placeholder="65"
-              min={0.01}
-              step={0.01}
-              classNames={inputStyles}
+
+            <Controller
+              control={control}
+              name="price"
+              render={({ field }) => (
+                <NumberInput
+                  label="Price (GHS)"
+                  placeholder="65"
+                  min={0.01}
+                  step={0.01}
+                  classNames={inputStyles}
+                  {...field}
+                  error={errors.price?.message}
+                />
+              )}
             />
           </SimpleGrid>
         </form>

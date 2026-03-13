@@ -40,7 +40,7 @@
   color: white !important;
   border-radius: 0.5rem !important;
   font-size: 1rem !important;
-  height: 55px;
+  min-height: 55px;
 }
 
 .inputField:focus {

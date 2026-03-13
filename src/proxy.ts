@@ -4,28 +4,36 @@ import type { NextRequest } from "next/server";
 export function proxy(request: NextRequest) {
   const token = request.cookies.get("access_token")?.value;
   const userRole = request.cookies.get("user_role")?.value;
+  const { pathname } = request.nextUrl;
 
-  // Guard the Admin routes
-  if (request.nextUrl.pathname.startsWith("/admin")) {
-    if (!token || userRole !== "admin") {
-      return NextResponse.redirect(new URL("/login", request.url));
-    }
+  const isPublicPath = pathname === "/login" || pathname.startsWith("/signup");
+
+  if (!token && !isPublicPath) {
+    return NextResponse.redirect(new URL("/login", request.url));
   }
 
-  // Prevent logged-in users from hitting /login or /signup
-  if (
-    token &&
-    (request.nextUrl.pathname === "/login" ||
-      request.nextUrl.pathname.startsWith("/signup"))
-  ) {
-    const target = userRole === "admin" ? "/admin" : "/dashboard";
+  if (token && isPublicPath) {
+    const target = userRole === "admin" ? "/admin" : "/";
     return NextResponse.redirect(new URL(target, request.url));
+  }
+
+  if (pathname.startsWith("/admin") && userRole !== "admin") {
+    return NextResponse.redirect(new URL("/", request.url));
   }
 
   return NextResponse.next();
 }
 
-// Only run middleware on these paths
+// Include everything except static files
 export const config = {
-  matcher: ["/admin/:path*", "/login", "/signup/:path*"],
+  matcher: [
+    /*
+     * Match all request paths except for the ones starting with:
+     * - api (API routes)
+     * - _next/static (static files)
+     * - _next/image (image optimization files)
+     * - favicon.ico (favicon file)
+     */
+    "/((?!api|_next/static|_next/image|favicon.ico).*)",
+  ],
 };

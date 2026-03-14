@@ -1,7 +1,9 @@
 import styles from "./Professional.module.css";
 import { ProfessionalData } from "@/types";
 
-import { Avatar, Group, Text, UnstyledButton } from "@mantine/core";
+import Link from "next/link";
+
+import { Avatar, Group, Text } from "@mantine/core";
 import { ArrowRight } from "lucide-react";
 import { startCase } from "lodash-es";
 
@@ -46,9 +48,12 @@ export default function Professional({ professional }: ProfessionalProps) {
       </div>
 
       <div className={styles.footer}>
-        <UnstyledButton className={styles.bookButton}>
+        <Link
+          href={`/professionals/${professional.id}`}
+          className={styles.bookButton}
+        >
           Book Now <ArrowRight size={18} />
-        </UnstyledButton>
+        </Link>
       </div>
     </div>
   );

@@ -1,0 +1,55 @@
+.serviceItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  transition: border-color 0.2s ease;
+}
+
+.serviceItem:hover {
+  border-color: rgba(100, 116, 139, 0.4);
+  background: rgba(30, 41, 59, 0.7);
+}
+
+.serviceDetails h4 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.serviceMeta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.875rem;
+  color: rgb(148, 163, 184);
+}
+
+.serviceBooking {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.servicePrice {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(52, 211, 153);
+}
+
+.bookBtn {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: none;
+  background: linear-gradient(135deg, rgb(52, 211, 153), rgb(34, 211, 238));
+  color: rgb(15, 23, 42);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.bookBtn:hover {
+  opacity: 0.9;
+}

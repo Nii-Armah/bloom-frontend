@@ -1,0 +1,52 @@
+.professionalCard {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  border-radius: 0.75rem;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  display: flex;
+  gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.professionalAvatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgb(52, 211, 153), rgb(34, 211, 238));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.75rem;
+  color: rgb(15, 23, 42);
+  flex-shrink: 0;
+}
+
+.professionalInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.professionalInfo h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.professionalInfo p {
+  color: rgb(148, 163, 184);
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.rating {
+  margin-top: 0.25rem;
+  font-weight: 600;
+  color: var(--mantine-color-text) !important;
+}
+
+.bio {
+  color: rgb(148, 163, 184);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}

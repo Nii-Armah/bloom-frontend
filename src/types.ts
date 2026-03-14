@@ -1,4 +1,5 @@
 export type ServiceData = {
+  id: string;
   name: string;
   duration: number;
   price: number;
@@ -9,6 +10,7 @@ export type ProfessionalData = {
   fullName: string;
   specialty: string;
   bio: string;
+  services: ServiceData[];
 };
 
 export type DayScheduleData = {

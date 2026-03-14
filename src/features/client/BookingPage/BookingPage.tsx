@@ -2,8 +2,9 @@
 
 import styles from "./BookingPage.module.css";
 import BookingForm from "@/features/client/components/BookingForm/BookingForm";
+import { useBookAppointment } from "@/hooks/useBookAppointment";
 
-import { use } from "react";
+import { use, useState } from "react";
 import { useServiceDetail } from "@/hooks/useServiceDetail";
 import { Center, Loader, Text } from "@mantine/core";
 
@@ -14,6 +15,24 @@ interface BookingPageProps {
 export default function BookingPage({ params }: BookingPageProps) {
   const { id } = use(params);
   const { data: service, isLoading, error } = useServiceDetail(id);
+
+  const [serverErrors, setServerErrorsState] = useState<Record<string, string>>(
+    {},
+  );
+
+  const { mutate, isPending } = useBookAppointment(setServerErrorsState);
+
+  function onBook(data: { selectedDate: string; selectedTime: string }) {
+    setServerErrorsState({});
+    const startDateTime = new Date(
+      `${data.selectedDate}T${data.selectedTime}:00`,
+    ).toISOString();
+
+    mutate({
+      serviceId: id,
+      start: startDateTime,
+    });
+  }
 
   if (isLoading) {
     return (
@@ -43,8 +62,10 @@ export default function BookingPage({ params }: BookingPageProps) {
         serviceName={service.name}
         duration={service.duration}
         price={service.price}
-        availableSlots={["9:00 AM", "10:00 AM", "1:00 PM"]}
-        onSubmit={() => {}}
+        availableSlots={["09:00", "10:00", "13:00"]}
+        onSubmit={onBook}
+        serverErrors={serverErrors}
+        isLoading={isPending}
       />
     </div>
   );

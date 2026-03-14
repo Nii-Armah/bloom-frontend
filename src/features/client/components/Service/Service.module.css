@@ -48,6 +48,7 @@
   font-size: 0.85rem;
   cursor: pointer;
   transition: opacity 0.2s ease;
+  text-decoration: none;
 }
 
 .bookBtn:hover {

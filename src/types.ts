@@ -3,6 +3,7 @@ export type ServiceData = {
   name: string;
   duration: number;
   price: number;
+  professionalName?: string;
 };
 
 export type ProfessionalData = {

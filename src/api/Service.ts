@@ -1,7 +1,7 @@
 import { apiClient } from "./apiClient";
 import { ServiceData } from "@/schemas/Service";
 
-import { decamelizeKeys } from "humps";
+import { camelizeKeys, decamelizeKeys } from "humps";
 
 export default class ServiceAPI {
   static async create(data: ServiceData) {
@@ -12,5 +12,10 @@ export default class ServiceAPI {
   static async getAll() {
     const response = await apiClient.get("/services/");
     return response.data;
+  }
+
+  static async getDetail(id: string): Promise<ServiceData> {
+    const response = await apiClient.get(`/services/${id}/`);
+    return camelizeKeys(response.data) as ServiceData;
   }
 }

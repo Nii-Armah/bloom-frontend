@@ -6,8 +6,8 @@ import styles from "./BookingForm.module.css";
 interface BookingFormProps {
   professionalName: string;
   serviceName: string;
-  duration: string;
-  price: string;
+  duration: number;
+  price: number;
   availableSlots: string[];
   onSubmit: (data: unknown) => void;
 }
@@ -22,7 +22,6 @@ export default function BookingForm({
 }: BookingFormProps) {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
-  const [notes, setNotes] = useState("");
   const [error, setError] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -32,7 +31,7 @@ export default function BookingForm({
       return;
     }
     setError(false);
-    onSubmit({ selectedDate, selectedTime, notes });
+    onSubmit({ selectedDate, selectedTime });
   };
 
   return (

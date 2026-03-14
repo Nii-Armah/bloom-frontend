@@ -1,9 +1,9 @@
 "use client";
 
+import Link from "next/link";
+
 import styles from "./Service.module.css";
 import { ServiceData } from "@/types";
-
-import { Button } from "@mantine/core";
 
 interface ServiceProps {
   service: ServiceData;
@@ -21,9 +21,13 @@ export default function Service({ service }: ServiceProps) {
 
       <div className={styles.serviceBooking}>
         <div className={styles.servicePrice}>GHS {service.price}</div>
-        <Button className={styles.bookBtn} onClick={() => {}}>
+        <Link
+          href={`${service.id}/booking`}
+          className={styles.bookBtn}
+          onClick={() => {}}
+        >
           Book Now
-        </Button>
+        </Link>
       </div>
     </div>
   );

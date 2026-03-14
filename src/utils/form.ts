@@ -14,3 +14,20 @@ export function setServerErrors<T extends FieldValues>(
     });
   }
 }
+
+export function setManualServerErrors(
+  error: ApiError,
+  setErrorsState: (errors: Record<string, string>) => void,
+) {
+  if (error.code === "VALIDATION_ERROR" && error.details) {
+    const newErrors: Record<string, string> = {};
+
+    Object.entries(error.details).forEach(([key, message]) => {
+      newErrors[key] = message as string;
+    });
+
+    setErrorsState(newErrors);
+  } else if (error.message) {
+    setErrorsState({ nonFieldErrors: error.message });
+  }
+}

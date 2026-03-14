@@ -18,6 +18,7 @@
     "axios": "^1.13.6",
     "humps": "^2.0.1",
     "js-cookie": "^3.0.5",
+    "lodash-es": "^4.17.23",
     "lucide-react": "^0.577.0",
     "next": "16.1.6",
     "react": "19.2.3",
@@ -28,6 +29,7 @@
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/humps": "^2.0.6",
+    "@types/lodash-es": "^4.17.12",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

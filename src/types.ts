@@ -5,6 +5,7 @@ export type ServiceData = {
 };
 
 export type ProfessionalData = {
+  id: string;
   fullName: string;
   specialty: string;
   bio: string;
@@ -16,3 +17,11 @@ export type DayScheduleData = {
   endTime: string;
   isAvailable: boolean;
 };
+
+export interface PaginatedResponse<T> {
+  items: T[];
+  total: number;
+  page: number;
+  size: number;
+  pages: number;
+}

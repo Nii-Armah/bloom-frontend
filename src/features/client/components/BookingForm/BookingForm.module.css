@@ -1,0 +1,155 @@
+.bookingForm {
+  padding: 1.5rem;
+  border-radius: 12px;
+  color: #c1c2c5;
+  min-width: 550px;
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+.serviceSummary {
+  padding: 1.25rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  background: rgba(100, 116, 139, 0.1);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+}
+
+.summaryRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.summaryLabel {
+  color: rgb(148, 163, 184);
+}
+
+.summaryValue {
+  font-weight: 500;
+  color: white;
+}
+
+.summaryDivider {
+  height: 1px;
+  background-color: #373a40;
+  margin: 0.75rem 0;
+}
+
+.summaryTotal {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #12b886;
+}
+
+.summaryTotal .summaryValue {
+  font-size: 1.25rem;
+  color: rgb(52, 211, 153);
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.formGroup label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #dee2e6;
+}
+
+.formGroup input[type="date"],
+.formGroup textarea {
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: white;
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+
+.timeSlots {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.timeSlot {
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  cursor: pointer;
+  text-align: center;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.timeSlot:hover {
+  border-color: rgba(100, 116, 139, 0.4);
+  background: rgba(30, 41, 59, 0.95);
+}
+
+.selectedSlot {
+  background: linear-gradient(135deg, rgb(52, 211, 153), rgb(34, 211, 238));
+  border-color: rgb(52, 211, 153);
+  color: rgb(15, 23, 42);
+  font-weight: 600;
+}
+
+.selectedSlot:hover {
+  background: linear-gradient(135deg, rgb(52, 211, 153), rgb(34, 211, 238));
+  border-color: rgb(52, 211, 153);
+  color: rgb(15, 23, 42);
+}
+
+.errorMessage {
+  background-color: rgba(250, 82, 82, 0.1);
+  color: #fa5252;
+  padding: 0.75rem;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  border: 1px solid rgba(250, 82, 82, 0.2);
+}
+
+.bookingActions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btnCancel,
+.btnConfirm {
+  flex: 1;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s;
+}
+
+.btnCancel {
+  background: rgba(100, 116, 139, 0.1);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  color: rgb(203, 213, 225);
+}
+
+.btnConfirm {
+  background: linear-gradient(135deg, rgb(52, 211, 153), rgb(34, 211, 238));
+  color: rgb(15, 23, 42);
+  border: none;
+}
+
+.btnCancel:hover,
+.btnConfirm:hover {
+  opacity: 0.9;
+}

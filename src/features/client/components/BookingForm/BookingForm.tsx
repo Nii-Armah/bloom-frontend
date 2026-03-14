@@ -77,6 +77,7 @@ export default function BookingForm({
           required
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
+          className={serverErrors?.selectedDate ? styles.inputError : ""}
         />
       </div>
 

@@ -21,4 +21,9 @@ export class ProfessionalService {
     response.data.items = professionals;
     return response.data;
   }
+
+  static async getDetail(id: string): Promise<ProfessionalData> {
+    const response = await apiClient.get(`/professionals/${id}/`);
+    return camelizeKeys(response.data) as ProfessionalData;
+  }
 }

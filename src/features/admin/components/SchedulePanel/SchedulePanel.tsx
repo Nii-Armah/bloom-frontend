@@ -1,34 +1,32 @@
+"uee client";
+
 import styles from "./SchedulePanel.module.css";
 import PanelHeader from "@/features/admin/components/PanelHeader";
 import DaySchedule from "@/features/admin/components/DaySchedule/DaySchedule";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { DayScheduleData } from "@/types";
 
-import { Button, SimpleGrid } from "@mantine/core";
+import { Button, Center, Loader, SimpleGrid } from "@mantine/core";
+
+import { useSchedules } from "@/hooks/useSchedule";
 
 export default function SchedulePanel() {
-  const [schedule, setSchedule] = useState<DayScheduleData[]>([
-    {
-      dayOfWeek: "Monday",
-      isAvailable: true,
-      startTime: "",
-      endTime: "",
-    },
-    {
-      dayOfWeek: "Tuesday",
-      isAvailable: true,
-      startTime: "",
-      endTime: "",
-    },
-  ]);
+  const { schedules, isLoading, isSaving, saveSchedule } = useSchedules();
+
+  const [localSchedule, setLocalSchedule] = useState<DayScheduleData[]>([]);
+
+  useEffect(() => {
+    console.log(schedules);
+    if (schedules && schedules.length > 0) {
+      setLocalSchedule(schedules);
+    }
+  }, [schedules]);
 
   const toggleDay = (index: number) => {
-    setSchedule((prev) =>
-      prev.map((item, i) =>
-        i === index ? { ...item, isAvailable: !item.isAvailable } : item,
-      ),
-    );
+    const updated = [...localSchedule];
+    updated[index].isAvailable = !updated[index].isAvailable;
+    setLocalSchedule(updated);
   };
 
   const updateTime = (
@@ -36,10 +34,19 @@ export default function SchedulePanel() {
     field: "startTime" | "endTime",
     value: string,
   ) => {
-    setSchedule((prev) =>
-      prev.map((item, i) => (i === index ? { ...item, [field]: value } : item)),
-    );
+    const updated = [...localSchedule];
+    if (field === "startTime") updated[index].startTime = value;
+    if (field === "endTime") updated[index].endTime = value;
+    setLocalSchedule(updated);
   };
+
+  if (isLoading) {
+    return (
+      <Center h={200}>
+        <Loader color="emerald" size="sm" />
+      </Center>
+    );
+  }
 
   return (
     <div>
@@ -53,7 +60,7 @@ export default function SchedulePanel() {
         spacing="lg"
         className={styles.schedule}
       >
-        {schedule.map((item, index) => (
+        {localSchedule.map((item, index) => (
           <DaySchedule
             key={index}
             item={item}
@@ -64,7 +71,13 @@ export default function SchedulePanel() {
         ))}
       </SimpleGrid>
 
-      <Button className={styles.saveButton}>Save Schedule</Button>
+      <Button
+        className={styles.saveButton}
+        onClick={() => saveSchedule(localSchedule)}
+        loading={isSaving}
+      >
+        Save Schedule
+      </Button>
     </div>
   );
 }

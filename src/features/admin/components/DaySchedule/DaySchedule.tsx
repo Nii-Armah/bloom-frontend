@@ -1,5 +1,6 @@
 import styles from "./DaySchedule.module.css";
 import { DayScheduleData } from "@/types";
+import { toTitleCase } from "@/utils/transformers";
 
 import { Box, Text, Checkbox, Group, Stack } from "@mantine/core";
 
@@ -37,7 +38,7 @@ export default function DaySchedule({
           onClick={onToggleIndex}
           style={{ cursor: "pointer", userSelect: "none" }}
         >
-          {item.dayOfWeek}
+          {toTitleCase(item.dayOfWeek)}
         </Text>
       </Group>
 

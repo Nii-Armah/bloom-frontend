@@ -15,10 +15,10 @@ export default function Service({ service }: ServiceProps) {
         </p>
       </div>
 
-      <div>
+      {/* <div>
         <p className={styles.bookingLabel}>Bookings</p>
         <p className={styles.bookingValue}>{service.bookingsCount}</p>
-      </div>
+      </div> */}
     </div>
   );
 }

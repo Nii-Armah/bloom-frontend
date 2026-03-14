@@ -1,0 +1,17 @@
+.schedule {
+  background: rgba(30, 41, 59, 0.5);
+  border: 1px solid rgba(100, 116, 139, 0.2);
+  border-radius: 0.75rem;
+  transition: all 0.2s ease;
+}
+
+.timeInput {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  background: rgba(30, 41, 59, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: white;
+  font-size: 0.875rem;
+  outline: none;
+}

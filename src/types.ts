@@ -10,3 +10,10 @@ export type ProfessionalData = {
   specialty: string;
   bio: string;
 };
+
+export type DayScheduleData = {
+  dayOfWeek: string;
+  startTime: string;
+  endTime: string;
+  isAvailable: boolean;
+};

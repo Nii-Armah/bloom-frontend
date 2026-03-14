@@ -9,7 +9,9 @@ interface BookingFormProps {
   duration: number;
   price: number;
   availableSlots: string[];
-  onSubmit: (data: unknown) => void;
+  onSubmit: (data: { selectedDate: string; selectedTime: string }) => void;
+  serverErrors?: Record<string, string>;
+  isLoading?: boolean;
 }
 
 export default function BookingForm({
@@ -19,6 +21,8 @@ export default function BookingForm({
   price,
   availableSlots,
   onSubmit,
+  serverErrors,
+  isLoading,
 }: BookingFormProps) {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedTime, setSelectedTime] = useState("");
@@ -55,6 +59,10 @@ export default function BookingForm({
           <span className={styles.summaryValue}>GHS {price}</span>
         </div>
       </div>
+
+      {serverErrors?.nonFieldErrors && (
+        <div className={styles.errorMessage}>{serverErrors.nonFieldErrors}</div>
+      )}
 
       {error && (
         <div className={styles.errorMessage}>
@@ -95,8 +103,13 @@ export default function BookingForm({
         >
           Cancel
         </button>
-        <button type="submit" className={styles.btnConfirm}>
-          Confirm Booking
+
+        <button
+          type="submit"
+          className={styles.btnConfirm}
+          disabled={isLoading}
+        >
+          {isLoading ? "Processing..." : "Confirm Booking"}
         </button>
       </div>
     </form>

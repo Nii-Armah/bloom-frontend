@@ -1,0 +1,40 @@
+.page {
+  background: linear-gradient(
+    to bottom right,
+    rgb(15, 23, 42),
+    rgb(30, 41, 59),
+    rgb(15, 23, 42)
+  );
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  color: white;
+}
+
+.backButton {
+  background: none;
+  border: none;
+  color: rgb(52, 211, 153);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+  display: inline-block;
+  margin-bottom: 30px;
+  display: flex;
+  align-items: center;
+}
+
+.arrowIcon {
+  margin-right: 7px;
+}
+
+.title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+.services {
+  display: grid;
+  gap: 20px;
+}
